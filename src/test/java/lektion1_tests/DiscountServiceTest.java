@@ -1,3 +1,4 @@
+package lektion1_tests;
 
 import org.junit.jupiter.api.Test;
 import se.johan.lektion1.DiscountService;
