@@ -1,7 +1,7 @@
 package se.johan.lektion2;
 
-import se.johan.lektion2.uppgifter.Discount;
-import se.johan.lektion2.uppgifter.Item;
+import se.johan.lektion2.uppgifter.dry.Discount;
+import se.johan.lektion2.uppgifter.dry.Item;
 
 public class Main {
     public static void main(String[] args) {

@@ -5,4 +5,8 @@ public class Snake  implements Animal{
     public void eat() {
 
     }
+
+    @Override
+    public void fly() {
+    }
 }

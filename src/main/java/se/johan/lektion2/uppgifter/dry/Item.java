@@ -1,4 +1,4 @@
-package se.johan.lektion2.uppgifter;
+package se.johan.lektion2.uppgifter.dry;
 
 public class Item {
     private String name;

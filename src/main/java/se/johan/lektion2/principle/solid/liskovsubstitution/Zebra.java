@@ -5,4 +5,9 @@ public class Zebra implements Animal{
     public void eat() {
 
     }
+
+    @Override
+    public void fly() {
+
+    }
 }
