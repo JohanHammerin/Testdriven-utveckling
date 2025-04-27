@@ -18,7 +18,7 @@ public class DependencyInversion {
 
     }
 
-    // Dependency Inversin == CORRECT APPROACH
+    // Dependency Inversion == CORRECT APPROACH
     void testPaymentMethod() {
         PaymentMethod paymentMethod = new PaymentMethod(
                 new Currency("EURO")
