@@ -5,17 +5,23 @@ public class Main {
         buildPyramid(3);
     }
 
-    public static void buildPyramid(int x) {
-        String star = "*".repeat(x);
+
+    // Test
+    // 1. Kolla så att height inte är negativt
+    // 2. Double
+    // 3. flag = true om oneAbove = height
+
+    public static void buildPyramid(int height) {
+        String star = "*".repeat(height);
         int oneAbove = 1;
         boolean flag = false;
 
 
-        for (int i = 0; i <= ((x * 2) - 1); i++) {
-            if (oneAbove < x && !flag) {
+        for (int i = 0; i <= ((height * 2) - 1); i++) {
+            if (oneAbove < height && !flag) {
                 System.out.print(star.substring(0, oneAbove));
                 oneAbove++;
-                if (oneAbove == x) {
+                if (oneAbove == height) {
                     flag = true;
                 }
             } else {
@@ -26,4 +32,5 @@ public class Main {
             System.out.println();
         }
     }
+
 }
