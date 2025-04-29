@@ -2,6 +2,7 @@ package se.johan.lektion3.cardgame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Dealer {
 
@@ -24,9 +25,19 @@ public class Dealer {
     }
 
     void generateSingleSuit(String name) {
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i <= 13; i++) {
             Card card = new Card(name, i);
             deck.add(card);
         }
     }
+
+    void shuffle() {
+        Random random = new Random();
+        int randomNum = random.nextInt(51);
+        for (int i = 0; i < 52; i++) {
+            Card card = deck.get(randomNum);
+            deck.set(i, card);
+        }
+    }
+
 }
