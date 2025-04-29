@@ -1,4 +1,4 @@
-package se.johan.lektion3.uppgift;
+package se.johan.lektion3.uppgift1;
 
 import java.util.Arrays;
 
