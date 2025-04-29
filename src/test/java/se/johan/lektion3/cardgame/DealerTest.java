@@ -2,9 +2,6 @@ package se.johan.lektion3.cardgame;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
@@ -36,6 +33,17 @@ class DealerTest {
         dealerSorted.shuffle();
 
         assertNotEquals(dealerSorted, dealerUnsorted);
+    }
 
+    @Test
+    void discardTest() {
+        Dealer dealerComplete =  new Dealer();
+        dealerComplete.generateDeck();
+
+        Dealer dealerMissing = new Dealer();
+        dealerMissing.generateDeck();
+        dealerMissing.discard(dealerMissing.getDeck());
+
+        assertNotEquals(dealerMissing, dealerComplete);
     }
 }

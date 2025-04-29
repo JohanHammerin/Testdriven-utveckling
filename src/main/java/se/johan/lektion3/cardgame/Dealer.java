@@ -40,4 +40,12 @@ public class Dealer {
         }
     }
 
+    void discard(List<Card> deck) {
+        deck.removeFirst();
+    }
+
+    void drawCard(List<Card> deck) {
+        System.out.println(deck.getFirst());
+    }
+
 }
