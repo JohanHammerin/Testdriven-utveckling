@@ -15,8 +15,7 @@ class PlayerTest {
 
     @Test
     void setValueTest() {
-        Player player = new Player("Benny");
-        player.setValue(-100);
+        Player player = new Player("Benny", -100);
         assertEquals(-1, player.getValue());
     }
 

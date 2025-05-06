@@ -6,5 +6,23 @@ public class Rule {
         return (player.getValue() > 21);
     }
 
+    /*
+    public boolean strongAce(Player player) {
+        if (player.getHand())
+            if (over21(player)) {
+
+            }
+    }
+     */
+
+    public boolean containsAce(Player player) {
+        for (int i = 0; i < player.getHand().size(); i++) {
+            if (player.getHand().get(i).getValue() == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }

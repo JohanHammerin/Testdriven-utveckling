@@ -64,4 +64,9 @@ public class Dealer {
         System.out.println(deck.getFirst());
     }
 
+    void giveCard(Player player) {
+        player.getHand().add(deck.getFirst());
+        discard(deck);
+    }
+
 }
