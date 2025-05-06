@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardTest {
 
-    // TODO - Bättre namn på alla test
+    // TODO - Bättre namn på alla test-metoder
+
     @Test
     void setSuitTest() {
         Card card = new Card("clubs",4);
