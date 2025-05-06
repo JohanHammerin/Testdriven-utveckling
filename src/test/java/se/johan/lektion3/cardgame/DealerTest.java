@@ -40,7 +40,7 @@ class DealerTest {
     }
 
     @Test
-    void generateSingleSuitUndressed() {
+    void generateSingleSuitUndressedTest() {
         Card card = new Card("clubs", 2);
         Dealer dealer = new Dealer();
         dealer.generateSingleSuitUndressed("clubs");
@@ -48,7 +48,7 @@ class DealerTest {
     }
 
     @Test
-    void generateSingleSuitDressed() {
+    void generateSingleSuitDressedTest() {
         Card card = new Card("clubs", 10);
         Dealer dealer = new Dealer();
         dealer.generateSingleSuitDressed("clubs");
