@@ -60,12 +60,9 @@ public class Dealer {
         deck.removeFirst();
     }
 
-    void drawCard(List<Card> deck) {
-        System.out.println(deck.getFirst());
-    }
 
     void giveCard(Player player) {
-        player.getHand().add(deck.getFirst());
+        player.draw(deck.getFirst());
         discard(deck);
     }
 

@@ -51,7 +51,7 @@ public class Player {
         return hand;
     }
 
-    public void setHand(ArrayList<Card> hand) {
-        this.hand = hand;
+    public void draw(Card card) {
+        hand.add(card);
     }
 }

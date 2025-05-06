@@ -2,6 +2,8 @@ package se.johan.lektion3.cardgame;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
@@ -17,7 +19,7 @@ class DealerTest {
 
     @Test
     void shuffleTest() {
-        Dealer dealerUnsorted =  new Dealer();
+        Dealer dealerUnsorted = new Dealer();
         dealerUnsorted.generateDeck();
 
         Dealer dealerSorted = new Dealer();
@@ -29,7 +31,7 @@ class DealerTest {
 
     @Test
     void discardTest() {
-        Dealer dealerComplete =  new Dealer();
+        Dealer dealerComplete = new Dealer();
         dealerComplete.generateDeck();
 
         Dealer dealerMissing = new Dealer();
@@ -53,5 +55,18 @@ class DealerTest {
         Dealer dealer = new Dealer();
         dealer.generateSingleSuitDressed("clubs");
         assertEquals(card.getSuit(), dealer.getDeck().getFirst().getSuit());
+    }
+
+    @Test
+    void giveCardTest() {
+        Dealer dealer = new Dealer();
+        ArrayList<Card> testList = new ArrayList<>();
+        Player player = new Player("Benny", testList);
+
+        dealer.generateDeck();
+        dealer.giveCard(player);
+        assertEquals(1, player.getHand().size());
+
+
     }
 }
