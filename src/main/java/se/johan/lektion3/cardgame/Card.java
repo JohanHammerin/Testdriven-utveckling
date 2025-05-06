@@ -29,7 +29,7 @@ public class Card {
     }
 
     public void setValue(int value) {
-        if(value < 1 || value > 13) {
+        if(value < 1 || value > 11) {
             value = -1;
         }
         this.value = value;

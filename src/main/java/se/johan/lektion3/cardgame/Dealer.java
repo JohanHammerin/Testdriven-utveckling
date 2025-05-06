@@ -18,15 +18,31 @@ public class Dealer {
     }
 
     void generateDeck() {
-        generateSingleSuit("clubs");
-        generateSingleSuit("diamonds");
-        generateSingleSuit("hearts");
-        generateSingleSuit("spades");
+        // 1(äss) - 10
+        generateSingleSuitUndressed("clubs");
+        generateSingleSuitUndressed("diamonds");
+        generateSingleSuitUndressed("hearts");
+        generateSingleSuitUndressed("spades");
+        // Klädda kort (alla är värda 10)
+        generateSingleSuitDressed("clubs");
+        generateSingleSuitDressed("diamonds");
+        generateSingleSuitDressed("hearts");
+        generateSingleSuitDressed("spades");
+
     }
 
-    void generateSingleSuit(String name) {
-        for (int i = 1; i <= 13; i++) {
+    // Genererar alla kort mellan 1 - 10
+    // TODO - Skapa en metod för att omvandla ett ess till 11 om det passar handen bättre.
+    void generateSingleSuitUndressed(String name) {
+        for (int i = 1; i <= 9; i++) {
             Card card = new Card(name, i);
+            deck.add(card);
+        }
+    }
+
+    void generateSingleSuitDressed(String name) {
+        for (int i = 0; i <= 3; i++) {
+            Card card = new Card(name, 10);
             deck.add(card);
         }
     }

@@ -2,7 +2,8 @@ package se.johan.lektion3.uppgift2;
 
 public class Main {
     public static void main(String[] args) {
-        buildPyramid(3);
+        //buildPyramid(3);
+        buildPyramid2(3);
     }
 
 
@@ -30,6 +31,18 @@ public class Main {
             }
 
             System.out.println();
+        }
+    }
+
+
+    public static void buildPyramid2(int height) {
+        String star = "*";
+        for (int i = 1; i <= height; i++) {
+            System.out.println(star.repeat(i));
+        }
+
+        for (int i = height - 1; i > 0; i--) {
+            System.out.println(star.repeat(i));
         }
     }
 
