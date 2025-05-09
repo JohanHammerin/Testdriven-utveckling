@@ -39,7 +39,8 @@ class DealerTest {
 
         Dealer dealerMissing = new Dealer();
         dealerMissing.generateDeck();
-        dealerMissing.discard(dealerMissing.getDeck());
+        dealerMissing.discard();
+
 
         assertNotEquals(dealerMissing, dealerComplete);
     }
@@ -62,14 +63,22 @@ class DealerTest {
 
     @Test
     void giveCardTest() {
-        ArrayList<Card> testList = new ArrayList<>();
         Player player = new Player("Benny");
         Dealer dealer = new Dealer();
 
         dealer.generateDeck();
         dealer.giveCard(player);
         assertEquals(1, player.getHand().size());
+    }
 
+    @Test
+    void giveCardAndDiscardTest() {
+        Player player = new Player("Benny");
+        Dealer dealer = new Dealer();
+
+        dealer.generateDeck();
+        dealer.giveCard(player);
+        assertEquals(51, dealer.getDeck().size());
     }
 
 

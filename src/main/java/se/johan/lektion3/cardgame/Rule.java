@@ -25,5 +25,9 @@ public class Rule {
         return false;
     }
 
+    boolean winCondition(Player player) {
+        return (player.getValue() == 21);
+    }
+
 
 }
