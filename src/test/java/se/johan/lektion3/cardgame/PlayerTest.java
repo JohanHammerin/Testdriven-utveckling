@@ -8,15 +8,14 @@ class PlayerTest {
 
     // TODO - Bättre namn på alla test-metoder
     @Test
-    void setName() {
+    void setNameTest() {
         Player player = new Player("Benny");
         assertEquals("Benny", player.getName());
     }
 
     @Test
-    void setValue() {
-        Player player = new Player("Benny");
-        player.setValue(-100);
+    void setValueTest() {
+        Player player = new Player("Benny", -100);
         assertEquals(-1, player.getValue());
     }
 

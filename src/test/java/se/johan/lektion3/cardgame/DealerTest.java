@@ -1,11 +1,16 @@
 package se.johan.lektion3.cardgame;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
     // TODO - Bättre namn på alla test-metoder
+    // TODO - Fixa en beforeEach/beforeAll metod som instansierar alla klasser istället för att gör det i varje metod (DRY)
+
 
     @Test
     void generateDeckTest() {
@@ -17,7 +22,7 @@ class DealerTest {
 
     @Test
     void shuffleTest() {
-        Dealer dealerUnsorted =  new Dealer();
+        Dealer dealerUnsorted = new Dealer();
         dealerUnsorted.generateDeck();
 
         Dealer dealerSorted = new Dealer();
@@ -29,7 +34,7 @@ class DealerTest {
 
     @Test
     void discardTest() {
-        Dealer dealerComplete =  new Dealer();
+        Dealer dealerComplete = new Dealer();
         dealerComplete.generateDeck();
 
         Dealer dealerMissing = new Dealer();
@@ -40,7 +45,7 @@ class DealerTest {
     }
 
     @Test
-    void generateSingleSuitUndressed() {
+    void generateSingleSuitUndressedTest() {
         Card card = new Card("clubs", 2);
         Dealer dealer = new Dealer();
         dealer.generateSingleSuitUndressed("clubs");
@@ -48,10 +53,36 @@ class DealerTest {
     }
 
     @Test
-    void generateSingleSuitDressed() {
+    void generateSingleSuitDressedTest() {
         Card card = new Card("clubs", 10);
         Dealer dealer = new Dealer();
         dealer.generateSingleSuitDressed("clubs");
         assertEquals(card.getSuit(), dealer.getDeck().getFirst().getSuit());
+    }
+
+    @Test
+    void giveCardTest() {
+        ArrayList<Card> testList = new ArrayList<>();
+        Player player = new Player("Benny", testList);
+        Dealer dealer = new Dealer();
+
+        dealer.generateDeck();
+        dealer.giveCard(player);
+        assertEquals(1, player.getHand().size());
+
+    }
+
+
+    @Test
+    void calculatePlayerValueTest() {
+        ArrayList<Card> testList = new ArrayList<>();
+        Player player = new Player("Benny", testList);
+        Dealer dealer = new Dealer();
+        dealer.generateDeck();
+        dealer.giveCard(player);
+        dealer.calculatePlayerValue(player);
+
+
+        assertNotEquals(0, player.getValue());
     }
 }

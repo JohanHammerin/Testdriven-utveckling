@@ -60,8 +60,18 @@ public class Dealer {
         deck.removeFirst();
     }
 
-    void drawCard(List<Card> deck) {
-        System.out.println(deck.getFirst());
+
+    void giveCard(Player player) {
+        player.draw(deck.getFirst());
+        discard(deck);
+    }
+
+    void calculatePlayerValue(Player player) {
+        int sum = 0;
+        for (int i = 0; i < player.getHand().size(); i++) {
+            sum += player.getHand().get(i).getValue();
+        }
+        player.setValue(sum);
     }
 
 }
