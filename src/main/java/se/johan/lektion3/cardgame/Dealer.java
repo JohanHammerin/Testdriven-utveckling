@@ -66,4 +66,12 @@ public class Dealer {
         discard(deck);
     }
 
+    void calculatePlayerValue(Player player) {
+        int sum = 0;
+        for (int i = 0; i < player.getHand().size(); i++) {
+            sum += player.getHand().get(i).getValue();
+        }
+        player.setValue(sum);
+    }
+
 }

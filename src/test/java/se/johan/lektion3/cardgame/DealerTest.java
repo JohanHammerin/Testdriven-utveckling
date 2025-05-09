@@ -1,5 +1,6 @@
 package se.johan.lektion3.cardgame;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
     // TODO - Bättre namn på alla test-metoder
+    // TODO - Fixa en beforeEach/beforeAll metod som instansierar alla klasser istället för att gör det i varje metod (DRY)
+
 
     @Test
     void generateDeckTest() {
@@ -59,14 +62,27 @@ class DealerTest {
 
     @Test
     void giveCardTest() {
-        Dealer dealer = new Dealer();
         ArrayList<Card> testList = new ArrayList<>();
         Player player = new Player("Benny", testList);
+        Dealer dealer = new Dealer();
 
         dealer.generateDeck();
         dealer.giveCard(player);
         assertEquals(1, player.getHand().size());
 
+    }
 
+
+    @Test
+    void calculatePlayerValueTest() {
+        ArrayList<Card> testList = new ArrayList<>();
+        Player player = new Player("Benny", testList);
+        Dealer dealer = new Dealer();
+        dealer.generateDeck();
+        dealer.giveCard(player);
+        dealer.calculatePlayerValue(player);
+
+
+        assertNotEquals(0, player.getValue());
     }
 }
