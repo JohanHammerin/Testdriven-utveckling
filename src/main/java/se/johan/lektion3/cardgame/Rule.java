@@ -16,7 +16,7 @@ public class Rule {
         }
     }
 
-    public boolean containsAce(Player player) {
+    boolean containsAce(Player player) {
         for (int i = 0; i < player.getHand().size(); i++) {
             if (player.getHand().get(i).getValue() == 11) {
                 return true;

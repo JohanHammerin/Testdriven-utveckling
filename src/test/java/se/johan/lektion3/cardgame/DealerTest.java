@@ -63,7 +63,7 @@ class DealerTest {
     @Test
     void giveCardTest() {
         ArrayList<Card> testList = new ArrayList<>();
-        Player player = new Player("Benny", testList);
+        Player player = new Player("Benny");
         Dealer dealer = new Dealer();
 
         dealer.generateDeck();
@@ -75,13 +75,11 @@ class DealerTest {
 
     @Test
     void calculatePlayerValueTest() {
-        ArrayList<Card> testList = new ArrayList<>();
-        Player player = new Player("Benny", testList);
+        Player player = new Player("Benny");
         Dealer dealer = new Dealer();
         dealer.generateDeck();
         dealer.giveCard(player);
         dealer.calculatePlayerValue(player);
-
 
         assertNotEquals(0, player.getValue());
     }

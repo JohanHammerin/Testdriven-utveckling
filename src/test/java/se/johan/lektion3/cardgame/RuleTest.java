@@ -22,7 +22,6 @@ class RuleTest {
         List<Card> hand = new ArrayList<>();
         hand.add(ace);
         Player player = new Player("Benny", hand);
-
         assertEquals(ace, player.getHand().getFirst());
     }
 
