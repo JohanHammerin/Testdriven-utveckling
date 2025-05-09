@@ -6,18 +6,19 @@ public class Rule {
         return (player.getValue() > 21);
     }
 
-    /*
-    public boolean strongAce(Player player) {
-        if (player.getHand())
-            if (over21(player)) {
-
+    public void strongAce(Player player) {
+        if (containsAce(player) && player.getValue() > 21) {
+            for (int i = 0; i < player.getHand().size(); i++) {
+                if (player.getHand().get(i).getValue() == 11) {
+                    player.getHand().get(i).setValue(1);
+                }
             }
+        }
     }
-     */
 
-    public boolean containsAce(Player player) {
+    boolean containsAce(Player player) {
         for (int i = 0; i < player.getHand().size(); i++) {
-            if (player.getHand().get(i).getValue() == 1) {
+            if (player.getHand().get(i).getValue() == 11) {
                 return true;
             }
         }

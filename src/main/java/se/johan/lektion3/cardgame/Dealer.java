@@ -13,12 +13,9 @@ public class Dealer {
         return deck;
     }
 
-    public void setDeck(List<Card> deck) {
-        this.deck = deck;
-    }
 
     void generateDeck() {
-        // 1(äss) - 10
+        // 2 - 9
         generateSingleSuitUndressed("clubs");
         generateSingleSuitUndressed("diamonds");
         generateSingleSuitUndressed("hearts");
@@ -29,12 +26,19 @@ public class Dealer {
         generateSingleSuitDressed("hearts");
         generateSingleSuitDressed("spades");
 
+        // Äss
+        generateAce("clubs");
+        generateAce("diamonds");
+        generateAce("hearts");
+        generateAce("spades");
+
+
     }
 
     // Genererar alla kort mellan 1 - 10
     // TODO - Skapa en metod för att omvandla ett ess till 11 om det passar handen bättre.
     void generateSingleSuitUndressed(String name) {
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 2; i <= 9; i++) {
             Card card = new Card(name, i);
             deck.add(card);
         }
@@ -45,6 +49,11 @@ public class Dealer {
             Card card = new Card(name, 10);
             deck.add(card);
         }
+    }
+
+    void generateAce(String name) {
+        Card card = new Card(name, 11);
+        deck.add(card);
     }
 
     void shuffle() {

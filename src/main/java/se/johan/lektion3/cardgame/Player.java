@@ -1,5 +1,6 @@
 package se.johan.lektion3.cardgame;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,12 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+        this.hand = new ArrayList<>();
+    }
+
+    public Player(String name, List<Card> hand) {
+        this.name = name;
+        this.hand = hand;
     }
 
     public Player(String name, int value) {
@@ -19,10 +26,6 @@ public class Player {
         this.value = value;
     }
 
-    public Player(String name, List<Card> hand) {
-        this.name = name;
-        this.hand = hand;
-    }
 
     // Methods
 
