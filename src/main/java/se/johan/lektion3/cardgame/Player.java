@@ -21,12 +21,6 @@ public class Player {
     }
 
 
-    // Methods
-
-
-    // Getters & Setters
-
-
     public int getValue() {
         return value;
     }
@@ -45,5 +39,4 @@ public class Player {
     public void draw(Card card) {
         hand.add(card);
     }
-
 }

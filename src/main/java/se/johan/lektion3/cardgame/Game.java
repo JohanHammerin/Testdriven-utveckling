@@ -2,7 +2,9 @@ package se.johan.lektion3.cardgame;
 
 import java.util.Scanner;
 
+import static se.johan.lektion3.cardgame.Printer.printHandsUnderRound;
 import static se.johan.lektion3.cardgame.Rule.*;
+
 
 public class Game {
     Dealer dealer = new Dealer();
@@ -10,32 +12,15 @@ public class Game {
     Player opponent = new Player();
 
 
-    void printHandsUnderRound() {
-        for (int i = 0; i < player.getHand().size(); i++) {
-            System.out.print(player.getHand().get(i).getSuit() + " ");
-            System.out.print(player.getHand().get(i).getValue() + ", ");
-        }
-
-        System.out.println();
-        for (int i = 0; i < opponent.getHand().size() - 1; i++) {
-            System.out.print(opponent.getHand().get(i).getSuit() + " ");
-            System.out.print(opponent.getHand().get(i).getValue() + ", ");
-        }
-        System.out.print("?");
-        System.out.println();
-
-    }
-
-
     void start() {
         dealer.generateDeck();
         dealer.shuffle();
         firstRound();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             round();
             String line = "-";
             System.out.println(line.repeat(100));
-            beforeAndAfterRound();
+            beforeAndAfterRound(dealer, player, opponent);
         }
     }
 
@@ -43,7 +28,7 @@ public class Game {
     void round() {
         Scanner input = new Scanner(System.in);
 
-        printHandsUnderRound();
+        printHandsUnderRound(player, opponent);
         if (opponent.getValue() < 17) {
             dealer.giveCard(opponent);
         }
@@ -52,16 +37,17 @@ public class Game {
         int choice = input.nextInt();
         if (choice == 1) {
             dealer.giveCard(player);
-            beforeAndAfterRound();
+            beforeAndAfterRound(dealer, player, opponent);
             checkForWinWhenHit(player, opponent);
         } else if (choice == 2) {
             System.out.println("Du stod över rundan");
-            beforeAndAfterRound();
+            beforeAndAfterRound(dealer, player, opponent);
             checkForWinWhenStand(player, opponent);
         } else {
             System.out.println("Ogiltig input");
         }
     }
+
 
     void firstRound() {
         dealer.giveCard(player);
@@ -71,23 +57,10 @@ public class Game {
         dealer.giveCard(opponent);
         dealer.giveCard(opponent);
 
-        beforeAndAfterRound();
+        beforeAndAfterRound(dealer, player, opponent);
 
         checkForWinWhenHit(player, opponent);
     }
 
-
-    void beforeAndAfterRound() {
-        dealer.calculatePlayerValue(player);
-        strongAce(player);
-        dealer.calculatePlayerValue(player);
-
-
-        dealer.calculatePlayerValue(opponent);
-        strongAce(opponent);
-        dealer.calculatePlayerValue(opponent);
-
-
-    }
 
 }

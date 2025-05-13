@@ -1,6 +1,8 @@
 package se.johan.lektion3.cardgame;
 
 
+import static se.johan.lektion3.cardgame.Printer.*;
+
 public class Rule {
 
     static boolean over21(Player player) {
@@ -32,102 +34,60 @@ public class Rule {
 
 
     static void checkForWinWhenHit(Player player, Player opponent) {
-        if (!checkBothPlayersOver21(player, opponent)) {
+        if (checkIfOnePlayersOver21(player, opponent)) {
             if (winCondition(player)) {
-                System.out.println("Du vann");
-                printHandsAfterWin(player, opponent);
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("Du vann!", player, opponent);
             } else if (winCondition(opponent)) {
-                System.out.println("Motståndaren vann");
-                printHandsAfterWin(player, opponent);
-
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("1Motståndaren vann!", player, opponent);
             } else if (winCondition(player) && winCondition(opponent)) {
-                System.out.println("Lika");
-                printHandsAfterWin(player, opponent);
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("Lika!", player, opponent);
             }
+        } else if (checkIfBothPlayersOver21(player, opponent)) {
+            printAfterWin("Lika!", player, opponent);
         } else if (over21(player)) {
-            System.out.println("Motståndaren vann");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
-
+            printAfterWin("2Motståndaren vann!", player, opponent);
         } else if (over21(opponent)) {
-            System.out.println("Du vann");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
-        } else if (checkBothPlayersOver21(player, opponent)) {
-            System.out.println("Lika");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
+            printAfterWin("Du vann!", player, opponent);
         }
     }
 
 
     static void checkForWinWhenStand(Player player, Player opponent) {
-        if (!checkBothPlayersOver21(player, opponent)) {
+        if (checkIfOnePlayersOver21(player, opponent)) {
             if (player.getValue() > opponent.getValue()) {
-                System.out.println("Du vann");
-                printHandsAfterWin(player, opponent);
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("Du vann!", player, opponent);
             } else if (player.getValue() < opponent.getValue()) {
-                System.out.println("Motståndaren vann");
-                printHandsAfterWin(player, opponent);
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("3Motståndaren vann!", player, opponent);
             } else if (player.getValue() == opponent.getValue()) {
-                System.out.println("Lika");
-                printHandsAfterWin(player, opponent);
-                getValues(player, opponent);
-                System.exit(0);
+                printAfterWin("Lika!", player, opponent);
             }
+        } else if (checkIfBothPlayersOver21(player, opponent)) {
+            printAfterWin("Lika!", player, opponent);
         } else if (over21(player)) {
-            System.out.println("Motståndaren vann");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
-
+            printAfterWin("4Motståndaren vann!", player, opponent);
         } else if (over21(opponent)) {
-            System.out.println("Du vann");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
-        } else if (checkBothPlayersOver21(player, opponent)) {
-            System.out.println("Lika");
-            printHandsAfterWin(player, opponent);
-            getValues(player, opponent);
-            System.exit(0);
+            printAfterWin("Du vann!", player, opponent);
         }
     }
 
-    static boolean checkBothPlayersOver21(Player player, Player opponent) {
-        return over21(player) || over21(opponent);
+    static boolean checkIfOnePlayersOver21(Player player, Player opponent) {
+        return !over21(player) && !over21(opponent);
     }
 
-    static void getValues(Player player, Player opponent) {
-        System.out.println(player.getValue());
-        System.out.println(opponent.getValue());
+    static boolean checkIfBothPlayersOver21(Player player, Player opponent) {
+        return over21(player) && over21(opponent);
     }
 
-    static void printHandsAfterWin(Player player, Player opponent) {
-        for (int i = 0; i < player.getHand().size(); i++) {
-            System.out.print(player.getHand().get(i).getSuit() + " ");
-            System.out.print(player.getHand().get(i).getValue() + ", ");
-        }
+    static void beforeAndAfterRound(Dealer dealer, Player player, Player opponent) {
+        dealer.calculatePlayerValue(player);
+        strongAce(player);
+        dealer.calculatePlayerValue(player);
 
-        System.out.println();
-        for (int i = 0; i < opponent.getHand().size(); i++) {
-            System.out.print(opponent.getHand().get(i).getSuit() + " ");
-            System.out.print(opponent.getHand().get(i).getValue() + ", ");
-        }
-        System.out.println();
+
+        dealer.calculatePlayerValue(opponent);
+        strongAce(opponent);
+        dealer.calculatePlayerValue(opponent);
     }
+
 
 }
