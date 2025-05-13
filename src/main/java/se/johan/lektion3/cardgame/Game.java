@@ -6,8 +6,8 @@ import static se.johan.lektion3.cardgame.Rule.*;
 
 public class Game {
     Dealer dealer = new Dealer();
-    Player player = new Player("Benny");
-    Player opponent = new Player("Bananas");
+    Player player = new Player();
+    Player opponent = new Player();
 
 
     void printHandsUnderRound() {
@@ -27,7 +27,6 @@ public class Game {
     }
 
 
-    // TODO - Cool grej att fixa
     void start() {
         dealer.generateDeck();
         dealer.shuffle();
@@ -42,11 +41,12 @@ public class Game {
 
 
     void round() {
+        Scanner input = new Scanner(System.in);
+
         printHandsUnderRound();
         if (opponent.getValue() < 17) {
             dealer.giveCard(opponent);
         }
-        Scanner input = new Scanner(System.in);
 
         System.out.println("Tryck 1 för att dra ett nytt kort. Tryck 2 för att stå rundan");
         int choice = input.nextInt();
@@ -78,11 +78,16 @@ public class Game {
 
 
     void beforeAndAfterRound() {
+        dealer.calculatePlayerValue(player);
         strongAce(player);
         dealer.calculatePlayerValue(player);
 
+
+        dealer.calculatePlayerValue(opponent);
         strongAce(opponent);
         dealer.calculatePlayerValue(opponent);
+
+
     }
 
 }

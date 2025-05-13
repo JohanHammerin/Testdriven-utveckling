@@ -11,7 +11,7 @@ class RuleTest {
 
     @Test
     void over21Test() {
-        Player player = new Player("Benny", 25);
+        Player player = new Player(25);
         Rule rule = new Rule();
         assertEquals(true, rule.over21(player));
     }
@@ -21,7 +21,7 @@ class RuleTest {
         Card ace = new Card("diamonds", 1);
         List<Card> hand = new ArrayList<>();
         hand.add(ace);
-        Player player = new Player("Benny", hand);
+        Player player = new Player(hand);
         assertEquals(ace, player.getHand().getFirst());
     }
 
@@ -36,7 +36,7 @@ class RuleTest {
         testList.add(cardThree);
 
 
-        Player player = new Player("Benny", testList);
+        Player player = new Player(testList);
 
         Dealer dealer = new Dealer();
         dealer.calculatePlayerValue(player);

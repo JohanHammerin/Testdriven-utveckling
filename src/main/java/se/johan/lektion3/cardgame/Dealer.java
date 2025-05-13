@@ -33,8 +33,6 @@ public class Dealer {
 
     }
 
-    // Genererar alla kort mellan 1 - 10
-    // TODO - Skapa en metod för att omvandla ett ess till 11 om det passar handen bättre.
     void generateSingleSuitUndressed(String name) {
         for (int i = 2; i <= 10; i++) {
             Card card = new Card(name, i);

@@ -1,7 +1,5 @@
 package se.johan.lektion3.cardgame;
 
-// 13 ranks in each of the four suits:
-// suits: clubs (♣), diamonds (♦), hearts (♥) and spades (♠).
 
 public class Card {
     private String suit;

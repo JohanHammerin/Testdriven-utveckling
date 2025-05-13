@@ -63,7 +63,7 @@ class DealerTest {
 
     @Test
     void giveCardTest() {
-        Player player = new Player("Benny");
+        Player player = new Player();
         Dealer dealer = new Dealer();
 
         dealer.generateDeck();
@@ -73,7 +73,7 @@ class DealerTest {
 
     @Test
     void giveCardAndDiscardTest() {
-        Player player = new Player("Benny");
+        Player player = new Player();
         Dealer dealer = new Dealer();
 
         dealer.generateDeck();
@@ -84,7 +84,7 @@ class DealerTest {
 
     @Test
     void calculatePlayerValueTest() {
-        Player player = new Player("Benny");
+        Player player = new Player();
         Dealer dealer = new Dealer();
         dealer.generateDeck();
         dealer.giveCard(player);

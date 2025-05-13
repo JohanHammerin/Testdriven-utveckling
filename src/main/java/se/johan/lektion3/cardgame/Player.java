@@ -1,29 +1,22 @@
 package se.johan.lektion3.cardgame;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Player {
-    private String name;
     private int value;
     private List<Card> hand;
 
-    // Constructor
 
-    public Player(String name) {
-        this.name = name;
+    public Player() {
         this.hand = new ArrayList<>();
     }
 
-    public Player(String name, List<Card> hand) {
-        this.name = name;
+    public Player(List<Card> hand) {
         this.hand = hand;
     }
 
-    public Player(String name, int value) {
-        this.name = name;
+    public Player(int value) {
         this.value = value;
     }
 
@@ -32,13 +25,7 @@ public class Player {
 
 
     // Getters & Setters
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getValue() {
         return value;
