@@ -67,9 +67,13 @@ public class Game {
         int choice = input.nextInt();
         if (choice == 1) {
             dealer.giveCard(player);
+            beforeAndAfterRound();
+            checkForWin();
+
             printCurrentHandPlayer();
         } else if (choice == 2) {
             System.out.println("Du stod över rundan");
+            beforeAndAfterRound();
             printCurrentHandOpponentTrue();
             checkForWin();
             checkForWinWhenStand();
@@ -95,25 +99,7 @@ public class Game {
         checkForWin();
     }
 
-    void checkForWin() {
-        if (rule.winCondition(player)) {
-            System.out.println("1Du vann!");
-            getValues();
 
-            System.exit(0);
-        } else if (rule.winCondition(opponent)) {
-            System.out.println("1Motståndaren vann!");
-            getValues();
-
-            System.exit(0);
-
-        } else if (rule.winCondition(player) && rule.winCondition(opponent)) {
-            System.out.println("1Lika");
-            getValues();
-
-            System.exit(0);
-        }
-    }
 
     public void getValues() {
         System.out.println(player.getValue());
@@ -121,23 +107,6 @@ public class Game {
     }
 
 
-    void checkForWinWhenStand() {
-        if (player.getValue() > opponent.getValue()) {
-            System.out.println("2Du vann!");
-            getValues();
-            System.exit(0);
-        } else if (player.getValue() < opponent.getValue()) {
-            System.out.println("2Du förlora!");
-            getValues();
-
-            System.exit(0);
-        } else {
-            System.out.println("2Lika");
-            getValues();
-
-            System.exit(0);
-        }
-    }
 
     void beforeAndAfterRound() {
         rule.strongAce(player);
