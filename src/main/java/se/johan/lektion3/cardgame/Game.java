@@ -43,7 +43,6 @@ public class Game {
 
     void round() {
         printHandsUnderRound();
-
         if (opponent.getValue() < 17) {
             dealer.giveCard(opponent);
         }

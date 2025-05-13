@@ -40,11 +40,16 @@ class RuleTest {
 
         Dealer dealer = new Dealer();
         dealer.calculatePlayerValue(player);
+        System.out.println(player.getValue());
 
-        Rule rule = new Rule();
-        rule.strongAce(player);
+        Rule.strongAce(player);
         dealer.calculatePlayerValue(player);
+
+        System.out.println(player.getValue());
         assertEquals(16, player.getValue());
 
     }
+
+
+
 }
