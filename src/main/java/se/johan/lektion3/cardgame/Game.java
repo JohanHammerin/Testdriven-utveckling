@@ -2,47 +2,21 @@ package se.johan.lektion3.cardgame;
 
 import java.util.Scanner;
 
+import static se.johan.lektion3.cardgame.Rule.*;
+
 public class Game {
     Dealer dealer = new Dealer();
-    Rule rule = new Rule();
     Player player = new Player("Benny");
     Player opponent = new Player("Bananas");
 
 
-    // TODO - Cool grej att fixa
-    void start() {
-        dealer.generateDeck();
-        dealer.shuffle();
-        firstRound();
-        for (int i = 0; i < 3; i++) {
-            round();
-            String line = "-";
-            System.out.println(line.repeat(100));
-        }
-    }
-
-
-    void printCurrentHandPlayer() {
-        System.out.print("You: ");
+    void printHandsUnderRound() {
         for (int i = 0; i < player.getHand().size(); i++) {
             System.out.print(player.getHand().get(i).getSuit() + " ");
             System.out.print(player.getHand().get(i).getValue() + ", ");
         }
+
         System.out.println();
-    }
-
-    void printCurrentHandOpponentTrue() {
-        System.out.print("Opponent: ");
-        for (int i = 0; i < opponent.getHand().size(); i++) {
-            System.out.print(opponent.getHand().get(i).getSuit() + " ");
-            System.out.print(opponent.getHand().get(i).getValue() + ", ");
-        }
-        System.out.println();
-    }
-
-    void printCurrentHandOpponent() {
-        System.out.print("Opponent: ");
-
         for (int i = 0; i < opponent.getHand().size() - 1; i++) {
             System.out.print(opponent.getHand().get(i).getSuit() + " ");
             System.out.print(opponent.getHand().get(i).getValue() + ", ");
@@ -53,11 +27,23 @@ public class Game {
     }
 
 
-    void round() {
-        beforeAndAfterRound();
+    // TODO - Cool grej att fixa
+    void start() {
+        dealer.generateDeck();
+        dealer.shuffle();
+        firstRound();
+        for (int i = 0; i < 10; i++) {
+            round();
+            String line = "-";
+            System.out.println(line.repeat(100));
+            beforeAndAfterRound();
+        }
+    }
 
-        printCurrentHandPlayer();
-        printCurrentHandOpponent();
+
+    void round() {
+        printHandsUnderRound();
+
         if (opponent.getValue() < 17) {
             dealer.giveCard(opponent);
         }
@@ -68,22 +54,14 @@ public class Game {
         if (choice == 1) {
             dealer.giveCard(player);
             beforeAndAfterRound();
-            checkForWin();
-
-            printCurrentHandPlayer();
+            checkForWinWhenHit(player, opponent);
         } else if (choice == 2) {
             System.out.println("Du stod över rundan");
             beforeAndAfterRound();
-            printCurrentHandOpponentTrue();
-            checkForWin();
-            checkForWinWhenStand();
+            checkForWinWhenStand(player, opponent);
         } else {
             System.out.println("Ogiltig input");
         }
-
-        beforeAndAfterRound();
-
-
     }
 
     void firstRound() {
@@ -96,23 +74,15 @@ public class Game {
 
         beforeAndAfterRound();
 
-        checkForWin();
+        checkForWinWhenHit(player, opponent);
     }
-
-
-
-    public void getValues() {
-        System.out.println(player.getValue());
-        System.out.println(opponent.getValue());
-    }
-
 
 
     void beforeAndAfterRound() {
-        rule.strongAce(player);
+        strongAce(player);
         dealer.calculatePlayerValue(player);
 
-        rule.strongAce(opponent);
+        strongAce(opponent);
         dealer.calculatePlayerValue(opponent);
     }
 

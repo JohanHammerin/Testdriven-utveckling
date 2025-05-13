@@ -2,6 +2,7 @@ package se.johan.lektion3.cardgame;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Player {
@@ -57,4 +58,5 @@ public class Player {
     public void draw(Card card) {
         hand.add(card);
     }
+
 }
