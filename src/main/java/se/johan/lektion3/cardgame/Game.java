@@ -29,18 +29,29 @@ public class Game {
         Scanner input = new Scanner(System.in);
 
         printHandsUnderRound(player, opponent);
-        if (opponent.getValue() < 17) {
-            dealer.giveCard(opponent);
-        }
 
         System.out.println("Tryck 1 för att dra ett nytt kort. Tryck 2 för att stå rundan");
         int choice = input.nextInt();
         if (choice == 1) {
             dealer.giveCard(player);
             beforeAndAfterRound(dealer, player, opponent);
+            if(player.getValue() == 21){
+                while (opponent.getValue() < 17) {
+                    beforeAndAfterRound(dealer, player, opponent);
+                    dealer.giveCard(opponent);
+                    beforeAndAfterRound(dealer, player, opponent);
+                }
+            }
             checkForWinWhenHit(player, opponent);
+
         } else if (choice == 2) {
             System.out.println("Du stod över rundan");
+            while (opponent.getValue() < 17) {
+                beforeAndAfterRound(dealer, player, opponent);
+                dealer.giveCard(opponent);
+                beforeAndAfterRound(dealer, player, opponent);
+            }
+
             beforeAndAfterRound(dealer, player, opponent);
             checkForWinWhenStand(player, opponent);
         } else {
