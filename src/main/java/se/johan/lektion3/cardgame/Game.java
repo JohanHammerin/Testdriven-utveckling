@@ -36,21 +36,13 @@ public class Game {
             dealer.giveCard(player);
             beforeAndAfterRound(dealer, player, opponent);
             if(player.getValue() == 21){
-                while (opponent.getValue() < 17) {
-                    beforeAndAfterRound(dealer, player, opponent);
-                    dealer.giveCard(opponent);
-                    beforeAndAfterRound(dealer, player, opponent);
-                }
+                checkIfOpponentShouldDraw(dealer, player, opponent);
             }
             checkForWinWhenHit(player, opponent);
 
         } else if (choice == 2) {
             System.out.println("Du stod över rundan");
-            while (opponent.getValue() < 17) {
-                beforeAndAfterRound(dealer, player, opponent);
-                dealer.giveCard(opponent);
-                beforeAndAfterRound(dealer, player, opponent);
-            }
+            checkIfOpponentShouldDraw(dealer, player, opponent);
 
             beforeAndAfterRound(dealer, player, opponent);
             checkForWinWhenStand(player, opponent);

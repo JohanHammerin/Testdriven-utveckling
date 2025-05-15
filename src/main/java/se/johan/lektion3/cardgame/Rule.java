@@ -89,5 +89,13 @@ public class Rule {
         dealer.calculatePlayerValue(opponent);
     }
 
+    static void checkIfOpponentShouldDraw(Dealer dealer, Player player, Player opponent){
+        while (opponent.getValue() < 17) {
+            beforeAndAfterRound(dealer, player, opponent);
+            dealer.giveCard(opponent);
+            beforeAndAfterRound(dealer, player, opponent);
+        }
+    }
+
 
 }
