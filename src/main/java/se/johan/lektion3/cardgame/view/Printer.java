@@ -1,4 +1,6 @@
-package se.johan.lektion3.cardgame;
+package se.johan.lektion3.cardgame.view;
+
+import se.johan.lektion3.cardgame.model.Player;
 
 public class Printer {
 
@@ -15,7 +17,7 @@ public class Printer {
         System.out.println(opponent.getValue());
     }
 
-    static void printAfterWin(String message, Player player, Player opponent) {
+    public static void printAfterWin(String message, Player player, Player opponent) {
         System.out.println(message);
         printHandsAfterWin(player);
         printHandsAfterWin(opponent);
@@ -23,7 +25,7 @@ public class Printer {
         System.exit(0);
     }
 
-    static void printHandsUnderRound(Player player, Player opponent) {
+    public static void printHandsUnderRound(Player player, Player opponent) {
         Printer.printHandsAfterWin(player);
 
         for (int i = 0; i < opponent.getHand().size() - 1; i++) {

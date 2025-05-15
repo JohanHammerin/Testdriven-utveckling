@@ -1,18 +1,21 @@
-package se.johan.lektion3.cardgame;
+package se.johan.lektion3.cardgame.controller;
 
+import se.johan.lektion3.cardgame.model.Player;
+
+import java.util.Objects;
 import java.util.Scanner;
 
-import static se.johan.lektion3.cardgame.Printer.printHandsUnderRound;
-import static se.johan.lektion3.cardgame.Rule.*;
+import static se.johan.lektion3.cardgame.view.Printer.printHandsUnderRound;
+import static se.johan.lektion3.cardgame.controller.Rule.*;
 
 
 public class Game {
-    Dealer dealer = new Dealer();
-    Player player = new Player();
+    public Dealer dealer = new Dealer();
+    public Player player = new Player();
     Player opponent = new Player();
 
 
-    void start() {
+    public void start() {
         dealer.generateDeck();
         dealer.shuffle();
         firstRound();
@@ -31,8 +34,8 @@ public class Game {
         printHandsUnderRound(player, opponent);
 
         System.out.println("Tryck 1 för att dra ett nytt kort. Tryck 2 för att stå rundan");
-        int choice = input.nextInt();
-        if (choice == 1) {
+        String choice = input.next();
+        if (Objects.equals(choice, "1")) {
             dealer.giveCard(player);
             beforeAndAfterRound(dealer, player, opponent);
             if(player.getValue() == 21){
@@ -40,7 +43,7 @@ public class Game {
             }
             checkForWinWhenHit(player, opponent);
 
-        } else if (choice == 2) {
+        } else if (Objects.equals(choice, "2")) {
             System.out.println("Du stod över rundan");
             checkIfOpponentShouldDraw(dealer, player, opponent);
 
@@ -52,7 +55,7 @@ public class Game {
     }
 
 
-    void firstRound() {
+    public void firstRound() {
         dealer.giveCard(player);
         dealer.giveCard(player);
 

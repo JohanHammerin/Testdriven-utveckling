@@ -1,6 +1,10 @@
 package se.johan.lektion3.cardgame;
 
 import org.junit.jupiter.api.Test;
+import se.johan.lektion3.cardgame.controller.Dealer;
+import se.johan.lektion3.cardgame.controller.Rule;
+import se.johan.lektion3.cardgame.model.Card;
+import se.johan.lektion3.cardgame.model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +16,7 @@ class RuleTest {
     @Test
     void over21Test() {
         Player player = new Player(25);
-        Rule rule = new Rule();
-        assertEquals(true, rule.over21(player));
+        assertTrue(Rule.over21(player));
     }
 
     @Test
@@ -40,12 +43,10 @@ class RuleTest {
 
         Dealer dealer = new Dealer();
         dealer.calculatePlayerValue(player);
-        System.out.println(player.getValue());
 
         Rule.strongAce(player);
         dealer.calculatePlayerValue(player);
 
-        System.out.println(player.getValue());
         assertEquals(16, player.getValue());
 
     }

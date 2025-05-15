@@ -1,6 +1,7 @@
 package se.johan.lektion3.cardgame;
 
 import org.junit.jupiter.api.Test;
+import se.johan.lektion3.cardgame.model.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 

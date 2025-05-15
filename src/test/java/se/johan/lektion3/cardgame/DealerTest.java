@@ -1,9 +1,9 @@
 package se.johan.lektion3.cardgame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
+import se.johan.lektion3.cardgame.controller.Dealer;
+import se.johan.lektion3.cardgame.model.Card;
+import se.johan.lektion3.cardgame.model.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,7 @@
-package se.johan.lektion3.cardgame;
+package se.johan.lektion3.cardgame.controller;
+
+import se.johan.lektion3.cardgame.model.Card;
+import se.johan.lektion3.cardgame.model.Player;
 
 import java.util.*;
 
@@ -12,7 +15,7 @@ public class Dealer {
     }
 
 
-    void generateDeck() {
+    public void generateDeck() {
         // 2 - 9
         generateSingleSuitUndressed("clubs");
         generateSingleSuitUndressed("diamonds");
@@ -33,14 +36,14 @@ public class Dealer {
 
     }
 
-    void generateSingleSuitUndressed(String name) {
+    public void generateSingleSuitUndressed(String name) {
         for (int i = 2; i <= 10; i++) {
             Card card = new Card(name, i);
             deck.add(card);
         }
     }
 
-    void generateSingleSuitDressed(String name) {
+    public void generateSingleSuitDressed(String name) {
         for (int i = 0; i <= 2; i++) {
             Card card = new Card(name, 10);
             deck.add(card);
@@ -52,21 +55,21 @@ public class Dealer {
         deck.add(card);
     }
 
-    void shuffle() {
+    public void shuffle() {
         Collections.shuffle(deck);
     }
 
-    void discard() {
+    public void discard() {
         deck.removeFirst();
     }
 
 
-    void giveCard(Player player) {
+    public void giveCard(Player player) {
         player.draw(deck.getFirst());
         discard();
     }
 
-    void calculatePlayerValue(Player player) {
+    public void calculatePlayerValue(Player player) {
         int sum = 0;
         for (int i = 0; i < player.getHand().size(); i++) {
             sum += player.getHand().get(i).getValue();

@@ -1,15 +1,17 @@
-package se.johan.lektion3.cardgame;
+package se.johan.lektion3.cardgame.controller;
 
 
-import static se.johan.lektion3.cardgame.Printer.*;
+import se.johan.lektion3.cardgame.model.Player;
+
+import static se.johan.lektion3.cardgame.view.Printer.*;
 
 public class Rule {
 
-    static boolean over21(Player player) {
+    public static boolean over21(Player player) {
         return (player.getValue() > 21);
     }
 
-    static void strongAce(Player player) {
+    public static void strongAce(Player player) {
         if (containsAce(player) && over21(player)) {
             for (int i = 0; i < player.getHand().size(); i++) {
                 if (player.getHand().get(i).getValue() == 11) {
@@ -38,14 +40,14 @@ public class Rule {
             if (winCondition(player)) {
                 printAfterWin("Du vann!", player, opponent);
             } else if (winCondition(opponent)) {
-                printAfterWin("1Motståndaren vann!", player, opponent);
+                printAfterWin("Motståndaren vann!", player, opponent);
             } else if (winCondition(player) && winCondition(opponent)) {
                 printAfterWin("Lika!", player, opponent);
             }
         } else if (checkIfBothPlayersOver21(player, opponent)) {
             printAfterWin("Lika!", player, opponent);
         } else if (over21(player)) {
-            printAfterWin("2Motståndaren vann!", player, opponent);
+            printAfterWin("Motståndaren vann!", player, opponent);
         } else if (over21(opponent)) {
             printAfterWin("Du vann!", player, opponent);
         }
@@ -57,14 +59,14 @@ public class Rule {
             if (player.getValue() > opponent.getValue()) {
                 printAfterWin("Du vann!", player, opponent);
             } else if (player.getValue() < opponent.getValue()) {
-                printAfterWin("3Motståndaren vann!", player, opponent);
+                printAfterWin("Motståndaren vann!", player, opponent);
             } else if (player.getValue() == opponent.getValue()) {
                 printAfterWin("Lika!", player, opponent);
             }
         } else if (checkIfBothPlayersOver21(player, opponent)) {
             printAfterWin("Lika!", player, opponent);
         } else if (over21(player)) {
-            printAfterWin("4Motståndaren vann!", player, opponent);
+            printAfterWin("Motståndaren vann!", player, opponent);
         } else if (over21(opponent)) {
             printAfterWin("Du vann!", player, opponent);
         }

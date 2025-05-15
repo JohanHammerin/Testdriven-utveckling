@@ -1,4 +1,4 @@
-package se.johan.lektion3.cardgame;
+package se.johan.lektion3.cardgame.model;
 
 import java.util.ArrayList;
 import java.util.List;
