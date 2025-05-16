@@ -29,7 +29,7 @@ class RuleTest {
     }
 
     @Test
-    void strongAce() {
+    void strongAceTest() {
         List<Card> testList = new ArrayList<>();
         Card cardOne = new Card("clubs", 5);
         Card cardTwo = new Card("clubs", 10);

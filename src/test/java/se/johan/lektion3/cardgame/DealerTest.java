@@ -8,8 +8,6 @@ import se.johan.lektion3.cardgame.model.Player;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
-    // TODO - Bättre namn på alla test-metoder
-    // TODO - Fixa en beforeEach/beforeAll metod som instansierar alla klasser istället för att gör det i varje metod (DRY)
 
 
     @Test
