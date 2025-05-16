@@ -11,7 +11,7 @@ public class Rule {
         return (player.getValue() > 21);
     }
 
-    public static void strongAce(Player player) {
+    public void strongAce(Player player) {
         if (containsAce(player) && over21(player)) {
             for (int i = 0; i < player.getHand().size(); i++) {
                 if (player.getHand().get(i).getValue() == 11) {
@@ -21,7 +21,7 @@ public class Rule {
         }
     }
 
-    static boolean containsAce(Player player) {
+     boolean containsAce(Player player) {
         for (int i = 0; i < player.getHand().size(); i++) {
             if (player.getHand().get(i).getValue() == 11) {
                 return true;
@@ -30,12 +30,12 @@ public class Rule {
         return false;
     }
 
-    static boolean winCondition(Player player) {
+     boolean winCondition(Player player) {
         return (player.getValue() == 21);
     }
 
 
-    static void checkForWinWhenHit(Player player, Player opponent) {
+     void checkForWinWhenHit(Player player, Player opponent) {
         if (checkIfOnePlayersOver21(player, opponent)) {
             if (winCondition(player)) {
                 printAfterWin("Du vann!", player, opponent);
@@ -54,7 +54,7 @@ public class Rule {
     }
 
 
-    static void checkForWinWhenStand(Player player, Player opponent) {
+     void checkForWinWhenStand(Player player, Player opponent) {
         if (checkIfOnePlayersOver21(player, opponent)) {
             if (player.getValue() > opponent.getValue()) {
                 printAfterWin("Du vann!", player, opponent);
@@ -72,15 +72,15 @@ public class Rule {
         }
     }
 
-    static boolean checkIfOnePlayersOver21(Player player, Player opponent) {
+     boolean checkIfOnePlayersOver21(Player player, Player opponent) {
         return !over21(player) && !over21(opponent);
     }
 
-    static boolean checkIfBothPlayersOver21(Player player, Player opponent) {
+     boolean checkIfBothPlayersOver21(Player player, Player opponent) {
         return over21(player) && over21(opponent);
     }
 
-    static void beforeAndAfterRound(Dealer dealer, Player player, Player opponent) {
+     void beforeAndAfterRound(Dealer dealer, Player player, Player opponent) {
         dealer.calculatePlayerValue(player);
         strongAce(player);
         dealer.calculatePlayerValue(player);
@@ -91,7 +91,7 @@ public class Rule {
         dealer.calculatePlayerValue(opponent);
     }
 
-    static void checkIfOpponentShouldDraw(Dealer dealer, Player player, Player opponent){
+     void checkIfOpponentShouldDraw(Dealer dealer, Player player, Player opponent){
         while (opponent.getValue() < 17) {
             beforeAndAfterRound(dealer, player, opponent);
             dealer.giveCard(opponent);

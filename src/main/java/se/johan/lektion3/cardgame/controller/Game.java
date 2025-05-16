@@ -6,12 +6,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import static se.johan.lektion3.cardgame.view.Printer.printHandsUnderRound;
-import static se.johan.lektion3.cardgame.controller.Rule.*;
 
 
 public class Game {
     public Dealer dealer = new Dealer();
     public Player player = new Player();
+    Rule rule = new Rule();
     Player opponent = new Player();
 
 
@@ -23,7 +23,7 @@ public class Game {
             round();
             String line = "-";
             System.out.println(line.repeat(100));
-            beforeAndAfterRound(dealer, player, opponent);
+            rule.beforeAndAfterRound(dealer, player, opponent);
         }
     }
 
@@ -37,18 +37,18 @@ public class Game {
         String choice = input.next();
         if (Objects.equals(choice, "1")) {
             dealer.giveCard(player);
-            beforeAndAfterRound(dealer, player, opponent);
+            rule.beforeAndAfterRound(dealer, player, opponent);
             if(player.getValue() == 21){
-                checkIfOpponentShouldDraw(dealer, player, opponent);
+                rule.checkIfOpponentShouldDraw(dealer, player, opponent);
             }
-            checkForWinWhenHit(player, opponent);
+            rule.checkForWinWhenHit(player, opponent);
 
         } else if (Objects.equals(choice, "2")) {
             System.out.println("Du stod över rundan");
-            checkIfOpponentShouldDraw(dealer, player, opponent);
+            rule.checkIfOpponentShouldDraw(dealer, player, opponent);
 
-            beforeAndAfterRound(dealer, player, opponent);
-            checkForWinWhenStand(player, opponent);
+            rule.beforeAndAfterRound(dealer, player, opponent);
+            rule.checkForWinWhenStand(player, opponent);
         } else {
             System.out.println("Ogiltig input");
         }
@@ -63,9 +63,9 @@ public class Game {
         dealer.giveCard(opponent);
         dealer.giveCard(opponent);
 
-        beforeAndAfterRound(dealer, player, opponent);
+        rule.beforeAndAfterRound(dealer, player, opponent);
 
-        checkForWinWhenHit(player, opponent);
+        rule.checkForWinWhenHit(player, opponent);
     }
 
 
